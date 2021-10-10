@@ -21,8 +21,10 @@ Installation
 
 Install $project by running:
 
-    install project
+    ::
 
+        docker-compose -f docker-compose.dev.yml up 
+         
 Contribute
 ----------
 
