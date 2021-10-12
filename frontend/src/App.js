@@ -5,6 +5,7 @@ import Unity, { UnityContext } from "react-unity-webgl";
 
 //local
 import './App.css';
+import './Assets/dest/css/test.min.css'
 import Bugs from './components/Bugs';
 import configureStore from './store/configureStore';
 
@@ -23,7 +24,7 @@ function App() {
   return (
     <Provider store={store}>
       {/* <Bugs/> */}
-      <h1>1111</h1>
+      <h1>111<h2>222</h2>111</h1>
       <Unity unityContext={unityContext} />
     </Provider>
   );
