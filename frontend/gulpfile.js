@@ -5,8 +5,8 @@ const rename = require('gulp-rename');
 const changed = require('gulp-changed');
 const del = require('del');
 
-const SCSS_SRC = './src/Assets/src/scss/**/*.scss';
-const SCSS_DEST = './src/Assets/dest/css';
+const SCSS_SRC = './src/assets/src/scss/**/*.scss';
+const SCSS_DEST = './src/assets/dest/css';
 
 gulp.task('compile_scss', () => {
     return gulp.src(SCSS_SRC)

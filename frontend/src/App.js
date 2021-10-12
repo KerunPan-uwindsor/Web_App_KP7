@@ -5,7 +5,7 @@ import Unity, { UnityContext } from "react-unity-webgl";
 
 //local
 import './App.css';
-import './Assets/dest/css/test.min.css'
+import './assets/dest/css/test.min.css'
 import Bugs from './components/Bugs';
 import configureStore from './store/configureStore';
 
