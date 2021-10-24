@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   react_dev:
-    container_name: react_dev_server
+    container_name: react_dev_server_container
     image: react_dev_app:0.0.1
     build: 
       context: .

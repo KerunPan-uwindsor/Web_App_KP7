@@ -4,13 +4,14 @@ services:
 
     # Redis
     redis:
+        container_name: redis_container
         image: redis:alpine
-        container_name: redis
         networks:
             - backend-net
         
-    #Database Postgres              
-    db:
+    # Database Postgres              
+    pgdb:
+        container_name: pgdb_container
         image: postgres
         volumes:
             - ./data/db:/var/lib/postgresql/data
@@ -18,9 +19,20 @@ services:
             - POSTGRES_DB=postgres
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=postgres
-        container_name: postgres_db
         ports:
             - "5432:5432"
+        networks:
+            - backend-net
+    
+    # pgadmin             
+    pgadmin:
+        container_name: pgadmin_container 
+        image: dpage/pgadmin4 
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+            - PGADMIN_DEFAULT_PASSWORD=root
+        ports:
+            - "5050:80"
         networks:
             - backend-net
 

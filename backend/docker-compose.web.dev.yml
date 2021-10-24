@@ -4,11 +4,11 @@ services:
 
     #Django Application
     django:
+        container_name: django_dev_server_container
         image: django_dev_app:0.0.2
         build: 
             context: .
-            dockerfile: Dockerfile.dev
-        container_name: django_dev_server
+            dockerfile: Dockerfile.dev    
         volumes: 
             - .:/app
         ports: 
