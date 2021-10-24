@@ -2,27 +2,9 @@ version: '3'
 
 services: 
 
-    # Redis
-    redis:
-        image: redis:alpine
-        container_name: redis
-
-    #Database Postgres              
-    db:
-        image: postgres
-        volumes:
-            - ./data/db:/var/lib/postgresql/data
-        environment:
-            - POSTGRES_DB=postgres
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
-        container_name: postgres_db
-        ports:
-            - "5432:5432"
-
     #Django Application
     django:
-        image: django_dev_app:0.0.1
+        image: django_dev_app:0.0.2
         build: 
             context: .
             dockerfile: Dockerfile.dev
@@ -37,13 +19,12 @@ services:
             - DEBUG=1
             - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1
             - CELERY_BROKER=redis://redis:6379/0
-            - CELERY_BACKEND=redis://redis:6379/0
-        depends_on: 
-            - redis
-            - db           
+            - CELERY_BACKEND=redis://redis:6379/0        
         command: python manage.py runserver 0.0.0.0:8000
+        networks:
+            - backend-net  
 
-    #Celery
+    # Celery
     # celery:
     #     container_name: celery
     #     build: 
@@ -52,10 +33,13 @@ services:
     #     volumes: 
     #         - .:/app
     #     command: celery -A core worker -l DEBUG
-    #     depends_on: 
-    #         - redis
-    #         - db
-    #         - django         
+        # networks:
+        #     - backend-net  
+
+networks:
+    backend-net:
+        external: true
+        name: web-app-kp7-backend-network    
             
     
 

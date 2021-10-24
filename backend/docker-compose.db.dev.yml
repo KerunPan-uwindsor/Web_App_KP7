@@ -1,0 +1,38 @@
+version: '3'
+
+services: 
+
+    # Redis
+    redis:
+        image: redis:alpine
+        container_name: redis
+        networks:
+            - backend-net
+        
+    #Database Postgres              
+    db:
+        image: postgres
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        container_name: postgres_db
+        ports:
+            - "5432:5432"
+        networks:
+            - backend-net
+
+networks:
+    backend-net:
+        external: true
+        name: web-app-kp7-backend-network
+            
+    
+
+
+
+
+    
+        
