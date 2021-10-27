@@ -23,18 +23,6 @@ services:
             - "5432:5432"
         networks:
             - backend-net
-    
-    # pgadmin             
-    pgadmin:
-        container_name: pgadmin_container 
-        image: dpage/pgadmin4 
-        environment:
-            - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-            - PGADMIN_DEFAULT_PASSWORD=root
-        ports:
-            - "5050:80"
-        networks:
-            - backend-net
 
 networks:
     backend-net:
