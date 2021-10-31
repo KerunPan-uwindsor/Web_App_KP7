@@ -3,6 +3,10 @@ psycopg2-binary>=2.8
 
 djangorestframework==3.12.4
 
+#User authentication
+djoser==2.1.0
+djangorestframework_simplejwt==4.8.0
+
 celery>=5.0
 redis>=3.5
 
