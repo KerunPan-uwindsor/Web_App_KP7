@@ -1,6 +1,9 @@
 Django>=3.0,<4.0
 psycopg2-binary>=2.8
 
+#Organize your settings
+python-decouple==3.5
+
 djangorestframework==3.12.4
 
 #User authentication
